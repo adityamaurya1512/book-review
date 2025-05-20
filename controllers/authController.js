@@ -8,7 +8,8 @@ export const signup = async (req, res) => {
     const user = await User.create(req.body);
     const token = generateToken(user._id);
     res.status(201).json({ token });
-  } catch {
+  } catch(err)
+   {  console.log(err)
     res.status(400).json({ message: 'Signup failed' });
   }
 };
